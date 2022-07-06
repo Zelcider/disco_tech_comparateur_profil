@@ -1,0 +1,50 @@
+[
+  {
+    "uuid": "79004485-5b33-4f71-83e9-0115f6468e5e",
+    "name": "Zen",
+    "logo": "zen",
+    "risk": 1,
+    "volatility": 0.63,
+    "performance": 1
+  },
+  {
+    "uuid": "80288eb5-138b-4053-b4db-8f98b5d230c6",
+    "name": "Randonneur",
+    "logo": "backpacker",
+    "risk": 2,
+    "volatility": 4.80,
+    "performance": 1
+  },
+  {
+    "uuid": "b43c5f06-d200-4863-a93b-d164600abf8f",
+    "name": "Entrepreneur",
+    "logo": "contractor",
+    "risk": 3,
+    "volatility": 7.36,
+    "performance": 1
+  },
+  {
+    "uuid": "b6c38d44-f1c6-4032-b218-d926e73180e0",
+    "name": "Energique",
+    "logo": "dynamic",
+    "risk": 4,
+    "volatility": 9.92,
+    "performance": 1
+  },
+  {
+    "uuid": "56a19493-263f-4cea-a866-895f478eaa67",
+    "name": "Aventurier",
+    "logo": "adventurer",
+    "risk": 5,
+    "volatility": 13.42,
+    "performance": 1
+  },
+  {
+    "uuid": "b221ca31-b1d3-4364-8243-2e8f1d88e7ef",
+    "name": "Explorateur",
+    "logo": "explorer",
+    "risk": 6,
+    "volatility": 15.18,
+    "performance": 1
+  }
+]
