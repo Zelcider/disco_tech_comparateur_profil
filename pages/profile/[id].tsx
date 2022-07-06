@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import profiles from '../../data/profiles.json';
 
-type Props = { logo: string; name: string; volatility: number; risk: number; performance: number };
+type Props = { logo: string; name: string; volatility: number; risk: Array<string>; performance: number };
 
 const Details: NextPage<Props> = ({ logo, name, volatility, risk, performance }: Props) => (
   <div style={{ padding: 40 }}>
@@ -27,9 +27,9 @@ const Details: NextPage<Props> = ({ logo, name, volatility, risk, performance }:
 
               <Typography variant="caption">
                 Risque :{' '}
-                <Typography variant="body2" gutterBottom>
-                  {risk} /6
-                </Typography>
+                {risk.map((value) => (
+                  <Image key={value} alt="chili" src={`/chili-${value}.svg`} width="10px" height="10px" />
+                ))}
               </Typography>
             </Grid>
 
@@ -42,10 +42,28 @@ const Details: NextPage<Props> = ({ logo, name, volatility, risk, performance }:
           </Grid>
         </Card>
       </Grid>
-      <Grid item>
+      <Grid item md={4}>
         <Card>
           <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={3}>
-            <Grid item> toto</Grid>
+            <Grid item md={4}>
+              <Typography variant="h4">Performance passée</Typography>
+            </Grid>
+            <Grid item md={12}>
+              <Card sx={{ borderBlock: '2px solid grey' }}>
+                <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={3}>
+                  <Grid item>
+                  <Typography variant='h4'>Totale</Typography>
+                    <Image
+                      alt="chart"
+                      src="/chart-full.svg"
+                      width="500vw"
+                      height="500vh"
+                      style={{ textAlign: 'center' }}
+                    />
+                  </Grid>
+                </Grid>
+              </Card>
+            </Grid>
           </Grid>
         </Card>
       </Grid>
@@ -57,7 +75,14 @@ Details.getInitialProps = async (ctx) => {
   const profile = profiles.find(({ uuid }) => uuid === ctx.query.id);
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { logo, name, volatility, risk, performance } = profile!;
-  return { logo, name, volatility, risk, performance };
+
+  const riskChilies = [...Array(6).keys()].map((value) => {
+    if (risk > value) {
+      return 'full';
+    }
+    return 'empty';
+  });
+  return { logo, name, volatility, risk: riskChilies, performance };
 };
 
 export default Details;
